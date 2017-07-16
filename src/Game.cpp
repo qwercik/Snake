@@ -9,8 +9,8 @@ namespace Snake
 			"Snake by Eryk Andrzejewski",
 			sf::Style::Close
 		);
-
-		status = Status::Init; 
+		
+		state = GameState::Init;
 	};
 	
 	Game::~Game()
@@ -21,9 +21,9 @@ namespace Snake
 
 	void Game::run()
 	{
-		status = Status::Run;
+		state = GameState::Run;
 
-		while (status != Status::Exit)
+		while (state != GameState::Exit)
 		{
 			handleEvents();
 			renderWindowContent();
@@ -38,7 +38,7 @@ namespace Snake
 			switch (event.type)
 			{
 				case sf::Event::Closed:
-					status = Status::Exit;
+					state = GameState::Exit;
 					break;
 			}
 		}
@@ -49,9 +49,4 @@ namespace Snake
 		window.clear();
 		window.display();
 	}
-
-	Game::Status Game::getStatus() const
-	{
-		return status;
-	};
 }

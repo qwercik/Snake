@@ -1,16 +1,16 @@
 CXX = g++
-CXX_PARAMS = -std=c++17 -Iinclude
+CXXFLAGS = -std=c++14 -Iinclude
 LD = g++
-LD_PARAMS = -lsfml-graphics -lsfml-window -lsfml-system
-OBJS = obj/main.o obj/Game.o obj/TexturesManager.o
+LDFLAGS = -lsfml-graphics -lsfml-window -lsfml-system
+OBJS = obj/main.o obj/Game.o 
 
 all: snake
 
 snake: $(OBJS)
-	$(LD) -o $@ $^ $(LD_PARAMS)
+	$(LD) -o $@ $^ $(LDFLAGS)
 
 obj/%.o: src/%.cpp
-	$(CXX) -c -o $@ $< $(CXX_PARAMS)
+	$(CXX) -c -o $@ $< $(CXXFLAGS)
 
 clean:
 	rm snake
