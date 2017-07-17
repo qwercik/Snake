@@ -2,7 +2,7 @@ CXX = g++
 CXXFLAGS = -std=c++14 -Iinclude
 LD = g++
 LDFLAGS = -lsfml-graphics -lsfml-window -lsfml-system
-OBJS = obj/main.o obj/Game.o 
+OBJS = obj/main.o obj/Game.o obj/FontManager.o
 
 all: snake
 

@@ -1,16 +1,18 @@
 #include <Snake/Game.hpp>
+#include <stdexcept>
+#include <iostream>
 
 namespace Snake
 {
 	Game::Game()
 	{
+		state = GameState::Init;
+
 		window.create(
 			sf::VideoMode(400, 400),
 			"Snake by Eryk Andrzejewski",
 			sf::Style::Close
 		);
-		
-		state = GameState::Init;
 	};
 	
 	Game::~Game()
@@ -21,7 +23,7 @@ namespace Snake
 
 	void Game::run()
 	{
-		state = GameState::Run;
+		state = GameState::Menu;
 
 		while (state != GameState::Exit)
 		{

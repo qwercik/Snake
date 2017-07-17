@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <Snake/GameState.hpp>
+#include <Snake/FontManager.hpp>
 
 namespace Snake
 {
@@ -20,5 +21,8 @@ namespace Snake
 		GameState state;
 		
 		sf::RenderWindow window;
+		FontManager fontManager;
+
+		sf::Text text;
 	};
 }
