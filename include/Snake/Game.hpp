@@ -22,7 +22,5 @@ namespace Snake
 		
 		sf::RenderWindow window;
 		FontManager fontManager;
-
-		sf::Text text;
 	};
 }

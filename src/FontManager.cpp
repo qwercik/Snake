@@ -8,13 +8,7 @@ namespace Snake
 
 	void FontManager::loadFont(const std::string& name, const std::string& path)
 	{
-		if (!fontExist(name))
-		{
-			std::shared_ptr<sf::Font> newFont(new sf::Font);
-			fonts[name] = newFont;
-		}
-
-		if (!fonts[name]->loadFromFile(path))
+		if (!fonts[name].loadFromFile(path))
 			throw FontManagerCouldNotLoadFontException("Couldn\'t load font file " + path);
 	}
 
@@ -26,7 +20,7 @@ namespace Snake
 		fonts.erase(fonts.find(name));
 	}
 
-	std::shared_ptr<sf::Font> FontManager::getFont(const std::string& name)
+	sf::Font& FontManager::getFont(const std::string& name)
 	{
 		if (!fontExist(name))
 			throw FontManagerFontNotLoadedException("Font " + name + " not exist!");

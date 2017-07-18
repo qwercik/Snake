@@ -12,8 +12,8 @@ namespace Snake
 			sf::VideoMode(400, 400),
 			"Snake by Eryk Andrzejewski",
 			sf::Style::Close
-		);
-	};
+		);	
+	}
 	
 	Game::~Game()
 	{
@@ -23,8 +23,6 @@ namespace Snake
 
 	void Game::run()
 	{
-		state = GameState::Menu;
-
 		while (state != GameState::Exit)
 		{
 			handleEvents();
