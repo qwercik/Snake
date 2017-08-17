@@ -3,15 +3,17 @@
 namespace Snake
 {
 	Game::Game() :
-	mainMenu(&fontManager)
+	mainMenu(&fontManager, sf::Vector2i(WINDOW_WIDTH, WINDOW_WIDTH))
 	{
 		state = GameState::Init;
 
 		window.create(
-			sf::VideoMode(400, 400),
+			sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT),
 			"Snake by Eryk Andrzejewski",
 			sf::Style::Close
 		);
+
+		window.setFramerateLimit(60);
 	}
 	
 	Game::~Game()
@@ -38,6 +40,14 @@ namespace Snake
 			{
 				case sf::Event::Closed:
 					state = GameState::Exit;
+					break;
+
+				case sf::Event::KeyPressed:
+					if (event.key.code == sf::Keyboard::Up)
+						mainMenu.markPreviousOption();
+					else if (event.key.code == sf::Keyboard::Down)
+						mainMenu.markNextOption();
+
 					break;
 			}
 		}
