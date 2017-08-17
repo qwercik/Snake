@@ -1,8 +1,8 @@
 CXX = g++
-CXXFLAGS = -std=c++14 -Iinclude
+CXXFLAGS = -std=c++17 -Iinclude
 LD = g++
 LDFLAGS = -lsfml-graphics -lsfml-window -lsfml-system
-OBJS = obj/main.o obj/Game.o obj/FontManager.o
+OBJS = obj/main.o obj/Game.o obj/ResourceManager.o obj/Menu.o 
 
 all: snake
 
@@ -13,8 +13,8 @@ obj/%.o: src/%.cpp
 	$(CXX) -c -o $@ $< $(CXXFLAGS)
 
 clean:
-	rm snake
 	rm obj/*
+	rm snake
 
 run:
 	./snake

@@ -2,10 +2,10 @@
 
 namespace Snake
 {
-	enum GameState
+	enum class GameState
 	{
 		Init,
-		Menu,
+		MainMenu,
 		Run,
 		Pause,
 		Exit

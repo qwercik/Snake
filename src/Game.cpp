@@ -1,10 +1,9 @@
 #include <Snake/Game.hpp>
-#include <stdexcept>
-#include <iostream>
 
 namespace Snake
 {
-	Game::Game()
+	Game::Game() :
+	mainMenu(&fontManager)
 	{
 		state = GameState::Init;
 
@@ -12,7 +11,7 @@ namespace Snake
 			sf::VideoMode(400, 400),
 			"Snake by Eryk Andrzejewski",
 			sf::Style::Close
-		);	
+		);
 	}
 	
 	Game::~Game()
@@ -47,6 +46,7 @@ namespace Snake
 	void Game::renderWindowContent()
 	{
 		window.clear();
+		window.draw(mainMenu);
 		window.display();
 	}
 }
