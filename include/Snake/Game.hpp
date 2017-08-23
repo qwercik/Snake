@@ -5,7 +5,6 @@
 #include <Snake/Menu.hpp>
 #include <SFML/Graphics.hpp>
 
-
 namespace Snake
 {
 	class Game
@@ -19,14 +18,14 @@ namespace Snake
 	private:
 		void handleEvents();
 		void renderWindowContent();
+		
+		const unsigned int WINDOW_WIDTH = 400;
+		const unsigned int WINDOW_HEIGHT = 400;
 
 		GameState state;
 		ResourceManager<sf::Font> fontManager;
+		sf::RenderWindow window;
 		
 		Menu mainMenu;
-
-		sf::RenderWindow window;
-		const int WINDOW_WIDTH = 400;
-		const int WINDOW_HEIGHT = 400;
 	};
 }

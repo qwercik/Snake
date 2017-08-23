@@ -1,19 +1,37 @@
 #include <Snake/Game.hpp>
+#include <iostream>
 
 namespace Snake
 {
 	Game::Game() :
-	mainMenu(&fontManager, sf::Vector2i(WINDOW_WIDTH, WINDOW_WIDTH))
+	window(sf::VideoMode(WINDOW_WIDTH, WINDOW_WIDTH), "Snake by Eryk Andrzejewski", sf::Style::Close),
+	mainMenu(&fontManager, WINDOW_WIDTH, "SNAKE"),
 	{
 		state = GameState::Init;
+		
+		mainMenu.addOption("Start game", [&]() {
+			state = GameState::Run;
+		});
 
-		window.create(
-			sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT),
-			"Snake by Eryk Andrzejewski",
-			sf::Style::Close
-		);
+		mainMenu.addOption("Highscores", [&]() {
+			state = GameState::Highscores;
+		});
+		
+		mainMenu.addOption("Settings", [&]() {
+			state = GameState::Settings;
+		});
+
+		mainMenu.addOption("About", [&]() {
+			state = GameState::About;
+		});
+
+		mainMenu.addOption("Exit", [&]() {
+			state = GameState::Exit;
+		});
 
 		window.setFramerateLimit(60);
+
+		state = GameState::MainMenu;
 	}
 	
 	Game::~Game()
@@ -36,27 +54,21 @@ namespace Snake
 		sf::Event event;
 		while (window.pollEvent(event))
 		{
-			switch (event.type)
-			{
-				case sf::Event::Closed:
-					state = GameState::Exit;
-					break;
+			if (event.type == sf::Event::Closed)
+				state = GameState::Exit;
 
-				case sf::Event::KeyPressed:
-					if (event.key.code == sf::Keyboard::Up)
-						mainMenu.markPreviousOption();
-					else if (event.key.code == sf::Keyboard::Down)
-						mainMenu.markNextOption();
-
-					break;
-			}
+			if (state == GameState::MainMenu)
+				mainMenu.processEvent(event);
 		}
 	}
 
 	void Game::renderWindowContent()
 	{
 		window.clear();
-		window.draw(mainMenu);
+		
+		if (state == GameState::MainMenu)
+			window.draw(mainMenu);
+		
 		window.display();
 	}
 }

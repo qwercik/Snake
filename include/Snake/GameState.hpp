@@ -7,6 +7,9 @@ namespace Snake
 		Init,
 		MainMenu,
 		Run,
+		Highscores,
+		Settings,
+		About,
 		Pause,
 		Exit
 	};
