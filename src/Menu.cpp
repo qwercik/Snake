@@ -3,10 +3,10 @@
 
 namespace Snake
 {
-	Menu::Menu(ResourceManager<sf::Font>* fontManager, unsigned int windowWidth, const std::string& title)
+	Menu::Menu(ResourceManager<sf::Font>* fontManager, sf::Vector2u windowResolution, const std::string& title)
 	{
 		this->fontManager = fontManager;
-		this->windowWidth = windowWidth;
+		windowWidth = windowResolution.x;	
 
 		titleText.setFont(fontManager->getResource("data/fonts/dlxfont.ttf"));
 		titleText.setCharacterSize(50);

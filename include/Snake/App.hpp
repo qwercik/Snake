@@ -1,31 +1,28 @@
 #pragma once
 
-#include <Snake/GameState.hpp>
 #include <Snake/ResourceManagement/ResourceManager.hpp>
+#include <Snake/Screen.hpp>
 #include <Snake/Menu.hpp>
+#include <Snake/About.hpp>
 #include <SFML/Graphics.hpp>
 
 namespace Snake
 {
-	class Game
+	class App 
 	{
 	public:
-		Game();
-		~Game();
-		
+		App();
 		void run();
 
 	private:
 		void handleEvents();
 		void renderWindowContent();
 		
-		const unsigned int WINDOW_WIDTH = 400;
-		const unsigned int WINDOW_HEIGHT = 400;
-
-		GameState state;
 		ResourceManager<sf::Font> fontManager;
 		sf::RenderWindow window;
 		
+		Screen* currentScreen;
 		Menu mainMenu;
+		About about;
 	};
 }

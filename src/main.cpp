@@ -1,7 +1,7 @@
-#include <Snake/Game.hpp>
+#include <Snake/App.hpp>
 
 int main()
 {
-	Snake::Game game;
-	game.run();
+	Snake::App app;
+	app.run();
 }
